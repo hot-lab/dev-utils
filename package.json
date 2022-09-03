@@ -1,7 +1,7 @@
 {
   "name": "@onelab/dev-utils",
   "version": "0.1.9-beta",
-  "author": "",
+  "author": "tamaka365 <tamaka365@gmail.com>",
   "license": "MIT",
   "private": false,
   "exports": {
