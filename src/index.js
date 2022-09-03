@@ -6,7 +6,6 @@ const chalk = require("./utils/configured-chalk");
 module.exports = {
   resolvePath,
   requireRootModule,
-  requireLocalModule,
   configLoader,
   chalk,
 };
