@@ -16,4 +16,23 @@ if (!userConfig) {
   module.exports = defaultConfig;
 }
 
-module.exports = _.merge(defaultConfig, userConfig);
+const loadConfig = (
+  defaultConfigRoot,
+  packageJsonConfigName,
+  fileConfigName
+) => {
+  const defaultConfig = require(defaultConfigRoot);
+  const packageJsonConfig =
+    requireRootModule("package.json")[packageJsonConfigName];
+  const fileConfig = requireRootModule(fileConfigName);
+
+  const userConfig = fileConfig || packageJsonConfig;
+
+  if (!userConfig) {
+    return defaultConfig;
+  }
+
+  return _.merge(defaultConfig, userConfig);
+};
+
+module.exports = loadConfig;
