@@ -28,17 +28,20 @@
   "sideEffects": false,
   "babel": {
     "presets": [
+      "@babel/preset-env",
       "@babel/preset-react"
     ]
   },
   "scripts": {
     "build": "yarn build:lib && yarn build:esm",
-    "build:esm": "babel src --out-dir dist/esm --extensions '.js,.jsx,.ts,.tsx' --copy-files --delete-dir-on-start",
-    "build:lib": "babel src --out-dir dist/lib --extensions '.js,.jsx,.ts,.tsx' --copy-files --delete-dir-on-start"
+    "build:esm": "babel src -d dist/esm --extensions '.js,.jsx,.ts,.tsx' --copy-files --delete-dir-on-start --plugins=transform-commonjs",
+    "build:lib": "babel src -d dist/lib --extensions '.js,.jsx,.ts,.tsx' --copy-files --delete-dir-on-start --plugins=@babel/transform-modules-commonjs"
   },
   "devDependencies": {
     "@babel/cli": "^7.18.10",
     "@babel/core": "^7.18.13",
-    "@babel/preset-react": "^7.18.6"
+    "@babel/preset-env": "^7.18.10",
+    "@babel/preset-react": "^7.18.6",
+    "babel-plugin-transform-commonjs": "^1.1.6"
   }
 }
