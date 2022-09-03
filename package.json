@@ -1,6 +1,6 @@
 {
   "name": "@onelab/dev-utils",
-  "version": "0.1.5-beta",
+  "version": "0.1.6-beta",
   "author": "",
   "license": "MIT",
   "private": false,
@@ -36,14 +36,16 @@
     "build:esm": "babel src -d dist/esm --extensions '.js,.jsx,.ts,.tsx' --copy-files --delete-dir-on-start --plugins=transform-commonjs",
     "build:lib": "babel src -d dist/lib --extensions '.js,.jsx,.ts,.tsx' --copy-files --delete-dir-on-start --plugins=@babel/transform-modules-commonjs"
   },
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "lodash": "^4.17.21"
+  },
   "devDependencies": {
     "@babel/cli": "^7.18.10",
     "@babel/core": "^7.18.13",
     "@babel/preset-env": "^7.18.10",
     "@babel/preset-react": "^7.18.6",
-    "babel-plugin-transform-commonjs": "^1.1.6",
-    "chalk": "^5.0.1",
-    "lodash": "^4.17.21"
+    "babel-plugin-transform-commonjs": "^1.1.6"
   },
   "repository": {
     "type": "git",
