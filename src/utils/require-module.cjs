@@ -38,27 +38,28 @@ exports.requireRootModule = (filePath) => {
 
   if (isFile) return require(resolvePath(filePath));
 
-  console.log(`${filePath} is not exist`);
+  // console.log(`${filePath} is not exist`);
 
   return null;
 };
 
-exports.requireLocalModule = (filePath) => {
-  const resolvePath = (relativePath) => path.resolve("./", relativePath);
+exports.requireLocalModule = (packageRoot, filePath) => {
+  const configPath = path.resolve(packageRoot, filePath);
+  // const resolvePath = (relativePath) => path.resolve(packageRoot, relativePath);
   const isIllegalModule = moduleFileExtensions.find((extension) =>
-    filePath.endsWith(`.${extension}`)
+    configPath.endsWith(`.${extension}`)
   );
 
   if (!isIllegalModule) {
-    console.log(chalk.error(`${filePath} 不是一个合法的模块`));
+    console.log(chalk.error(`${configPath} 不是一个合法的模块`));
     process.exit(1);
   }
 
-  const isFile = fs.existsSync(resolvePath(filePath));
+  const isFile = fs.existsSync(resolvePath(configPath));
 
-  if (isFile) return require(resolvePath(filePath));
+  if (isFile) return require(resolvePath(configPath));
 
-  console.log(`${filePath} is not exist`);
+  // console.log(`${filePath} is not exist`);
 
   return null;
 };
